@@ -51,7 +51,7 @@ public class BankAccountRestController {
     public BankAccount withdraw(@PathVariable int id,
                               @RequestBody BankAccount bankAccount) {
         BankAccount record = repository.findById(id).get();
-        record.setBalance(bankAccount.getBalance() - record.getBalance());
+        record.setBalance(record.getBalance() - bankAccount.getBalance());
         repository.save(record);
         return record;
     }
@@ -60,7 +60,7 @@ public class BankAccountRestController {
     public BankAccount deposit(@PathVariable int id,
                                 @RequestBody BankAccount bankAccount) {
         BankAccount record = repository.findById(id).get();
-        record.setBalance(bankAccount.getBalance() + record.getBalance());
+        record.setBalance(record.getBalance() + bankAccount.getBalance());
         repository.save(record);
         return record;
     }
